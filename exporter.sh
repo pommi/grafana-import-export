@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 set -x
 
-
-
 if [ "$1" = "" ] || [ "$2" = "" ] || [ "$3" = "" ] || [ "$4" = "" ]; then
   echo $0: usage: $0  host file-dir username password
   exit
@@ -13,7 +11,6 @@ FILE_DIR=$2
 USER=$3
 PASSWORD=$4
 
-#needs key implementation
 ORGS=(
 "MainOrg:xxxxxxxxxx")
 
