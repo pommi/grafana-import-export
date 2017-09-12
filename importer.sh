@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
-ORGS=(
-"org1:xxxxxxxxxx"
-"org2:xxxxxxxxxx")
+
 
 USER=admin
 PASSWORD=ir8isypsg7dynjekdu5z
@@ -30,37 +28,9 @@ if [[ -n "$1" ]]
 		        echo "Wrong param $f. Must be `organization/type/file`"
             fi
 
-			ARGORG=${args[0]}
-			if [ -d "$FILE_DIR/$ARGORG" ]
-			then
-				for row in "${ORGS[@]}" ; do
-					ORG=${row%%:*}
-					if [ $ARGORG == $ORG ]
-					then
-						KEY=${row#*:}
-						TYPE=${args[1]}
-						FILE=${args[2]}
-
-						for file in $FILE_DIR/$ORG/$TYPE/$FILE; do
-						    if [ $TYPE == 'dashboards' ]
-						    then
-							    import_file $file $KEY 'dashboards/db'
-							else
-							    import_file $file $KEY 'datasources'
-							fi
-						done
-					fi
-				done
-			else
-				echo "$FILE_DIR/$ARGORG does not exist."
-			fi
-		done
-    else
     	printf "Importing all"
-    	for row in "${ORGS[@]}" ; do
-			ORG=${row%%:*}
-			KEY=${row#*:}
-			DIR="$FILE_DIR/$ORG"
+
+			DIR="$FILE_DIR"
 
             printf "Datasources..."
             for file in $DIR/datasources/*.json; do
