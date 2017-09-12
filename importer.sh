@@ -4,8 +4,8 @@ set -x
 
 
 
-if [ "$1" = "" ] || [ "$2" = "" ] || [ "$3" = "" ] || [ "$4" = "" ] || [ "$5" = "" ] || [ "$6" = "" ]; then
-  echo $0: usage: $0  host file-dir username password dashboard datasource
+if [ "$1" = "" ] || [ "$2" = "" ] || [ "$3" = "" ] || [ "$4" = "" ]; then
+  echo $0: usage: $0  host file-dir username password
   exit
 fi
 
@@ -17,7 +17,7 @@ DASHBOARD=$5
 DATASOURCE=$6
 
 ORGS=(
-"org1:xxxxxxxxxx")
+"MainOrg:xxxxxxxxxx")
 
 import_file(){
 	if ! [ -f "$1" ]
