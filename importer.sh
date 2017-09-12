@@ -2,7 +2,11 @@
 ORGS=(
 "org1:xxxxxxxxxx"
 "org2:xxxxxxxxxx")
-HOST="http://your.grafana.host"
+
+USER=admin
+PASSWORD=ir8isypsg7dynjekdu5z
+
+HOST="172.28.106.6:3000"
 FILE_DIR=path/to/export
 
 import_file(){
@@ -13,7 +17,7 @@ import_file(){
 	fi
 
 	printf "Processing $1 file...\n"
-    curl -k -XPOST "${HOST}/api/$3" --data-binary @./$1 -H "Content-Type: application/json" -H "Accept: application/json" -H "Authorization: Bearer $2"
+    curl -k -XPOST "http://${USER}:${PASSWORD}@${HOST}/api/$3" --data-binary @./$1 -H "Content-Type: application/json" -H "Accept: application/json"
     printf "\n"
 }
 
