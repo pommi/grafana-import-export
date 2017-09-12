@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+set -x 
 
 USER=admin
 PASSWORD=ir8isypsg7dynjekdu5z
