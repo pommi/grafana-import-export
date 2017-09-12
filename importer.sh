@@ -5,7 +5,7 @@ USER=admin
 PASSWORD=ir8isypsg7dynjekdu5z
 
 HOST="172.28.106.6:3000"
-FILE_DIR=path/to/export
+FILE_DIR=${arg[0]}
 
 import_file(){
 	if ! [ -f "$1" ]
