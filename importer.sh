@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
 
 
 
@@ -37,7 +36,7 @@ then
 			IFS='/' read -r -a args <<< "$f"
 			if ! [ ${#args[@]} == 3 ]
 			then
-					echo "Wrong param $f. Must be `organization/type/file`"
+					echo "Param $f. Skipping..."
 					fi
 
 		ARGORG=${args[0]}
