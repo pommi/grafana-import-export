@@ -43,3 +43,12 @@ To import all .json files from **FILE_DIR** to your Grafana:
 ```
 ./importer.sh HOST PATH_TO_EXPORT_FILES_FILE_DIR USER PASSWORD PATH_TO_DASHBOARD/*.json PATH_TO_DATASOURCE/*.json
 ```
+
+chmod 755 importer_noorg.sh
+```
+
+To import all .json files from **DIR** to your Grafana:
+```
+./importer_noorg.sh HOST USER DIR 
+```
+
