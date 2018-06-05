@@ -15,7 +15,7 @@ ORGS=(
 "MainOrg:xxxxxxxxxx")
 
 fetch_fields() {
-    echo $(curl  "http://${USER}:${PASSWORD}@${HOST}/api/${1}" | jq -r "if type==\"array\" then .[] else . end| .${2}")
+    echo $(curl  "https://${USER}:${PASSWORD}@${HOST}/api/${1}" | jq -r "if type==\"array\" then .[] else . end| .${2}")
 }
 
 if [ ! -d "$FILE_DIR" ] ; then
@@ -42,13 +42,13 @@ for row in "${ORGS[@]}" ; do
     for dash in $(fetch_fields 'search?query=&' 'uri'); do
         DB=$(echo ${dash}|sed 's,db/,,g').json
         echo $DB
-        curl "http://${USER}:${PASSWORD}@${HOST}/api/dashboards/${dash}" | jq '.dashboard.id = null' | jq '.overwrite = true' > "$DIR/dashboards/$DB"
+        curl "https://${USER}:${PASSWORD}@${HOST}/api/dashboards/${dash}" | jq '.dashboard.id = null' | jq '.overwrite = true' > "$DIR/dashboards/$DB"
     done
 
 	for id in $(fetch_fields 'datasources' 'id'); do
         DS=$(echo $(fetch_fields "datasources/${id}" 'name')|sed 's/ /-/g').json
         echo $DS
-        curl "http://${USER}:${PASSWORD}@${HOST}/api/datasources/${id}" | jq '.id = null' | jq '.orgId = null' > "$DIR/datasources/$DS"
+        curl "https://${USER}:${PASSWORD}@${HOST}/api/datasources/${id}" | jq '.id = null' | jq '.orgId = null' > "$DIR/datasources/$DS"
     done
 
 done
